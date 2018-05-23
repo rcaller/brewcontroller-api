@@ -8,7 +8,6 @@
 *.ctxt
 
 # Gradle Files #
-################
 .gradle
 .m2
 
