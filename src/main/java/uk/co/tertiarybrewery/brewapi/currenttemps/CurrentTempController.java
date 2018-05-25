@@ -15,7 +15,7 @@ public class CurrentTempController {
     @Autowired
     CurrentTempService currentTempService;
 
-    @CrossOrigin(origins = {"http://localhost:4200", "http://localhost:8080"})
+    @CrossOrigin(origins = {"http://localhost:4200", "http://localhost:8080", "http://localhost"})
     @GetMapping(value = "/current",produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseEntity<?> index() {
