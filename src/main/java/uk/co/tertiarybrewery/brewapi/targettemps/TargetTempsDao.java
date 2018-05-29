@@ -31,4 +31,22 @@ public class TargetTempsDao {
 
         return temps;
     }
+
+    public void clear() {
+        jdbcTemplate.update("DELETE FROM targetTemps");
+    }
+
+    public int getLastTempPointTime() {
+        Integer lastTempPoint = jdbcTemplate.queryForObject("SELECT MAX(secondsElapsed) FROM targetTemps", Integer.class);
+        if (lastTempPoint!=null) {
+            return (int)lastTempPoint;
+        }
+        else {
+            return 0;
+        }
+    }
+
+    public void addTempPoint(int pointTime, Float stepTemp) {
+        jdbcTemplate.update("INSERT INTO targetTemps (secondsElapsed, temperature) VALUES (?, ?)", pointTime, stepTemp);
+    }
 }

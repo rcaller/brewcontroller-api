@@ -173,8 +173,9 @@
               <NAME>Mash step</NAME>
               <VERSION>1</VERSION>
               <TYPE>Temperature</TYPE>
-              <STEP_TEMP>65</STEP_TEMP>
+              <STEP_TEMP>76</STEP_TEMP>
               <STEP_TIME>12</STEP_TIME>
+              <RAMP_TIME>2</RAMP_TIME>
           </MASH_STEP>
       </MASH_STEPS>
     </MASH>

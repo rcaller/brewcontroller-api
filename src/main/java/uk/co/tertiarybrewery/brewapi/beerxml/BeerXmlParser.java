@@ -1,11 +1,13 @@
 package uk.co.tertiarybrewery.brewapi.beerxml;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 import org.w3c.dom.Document;
-import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
+import uk.co.tertiarybrewery.brewapi.mashprofile.MashProfileBuilder;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -23,6 +25,9 @@ public class BeerXmlParser {
 
     DocumentBuilderFactory documentBuilderFactory;
     DocumentBuilder documentBuilder;
+
+    @Autowired
+    MashProfileBuilder mashProfileBuilder;
 
     public BeerXmlParser() throws ParserConfigurationException {
         documentBuilderFactory  = DocumentBuilderFactory.newInstance();
@@ -50,14 +55,35 @@ public class BeerXmlParser {
             throw new BeerXMLReadException("IO Issue");
         }
         try {
-            nodes = (NodeList)xPath.evaluate("/RECIPES/RECIPE/MASH/MASH_STEPS",
+            nodes = (NodeList)xPath.evaluate("/RECIPES/RECIPE/MASH/MASH_STEPS/MASH_STEP",
                     dom, XPathConstants.NODESET);
         } catch (XPathExpressionException e) {
             throw new BeerXmlParseException("Unable to find mash steps");
         }
-        for (int i = 0; i < nodes.getLength(); ++i) {
-            Element e = (Element) nodes.item(i);
+        mashProfileBuilder.clearProfile();
+
+        for (int i = 0; i < nodes.getLength(); i++) {
+            Node stepDetails = nodes.item(i);
+            Float stepTime= getNodeValue(xPath, stepDetails,"STEP_TIME");
+            Float stepTemp= getNodeValue(xPath, stepDetails,"STEP_TEMP");
+            Float rampTime= getNodeValue(xPath, stepDetails,"RAMP_TIME");
+
+            mashProfileBuilder.addStep(stepTime, stepTemp, rampTime);
+
         }
+    }
+
+    private Float getNodeValue(XPath xPath, Node stepDetails, String nodeName) throws BeerXmlParseException {
+        Float dataValue;
+        try {
+           
+            dataValue = Float.valueOf(xPath.evaluate(nodeName, stepDetails));
+        } catch (XPathExpressionException e) {
+            throw new BeerXmlParseException("Invalid XML (STEP_TIME)");
+        } catch (NumberFormatException e) {
+            dataValue=0f;
+        }
+        return dataValue;
     }
 
 

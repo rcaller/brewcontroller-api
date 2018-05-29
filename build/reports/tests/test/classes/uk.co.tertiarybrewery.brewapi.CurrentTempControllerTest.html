@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.036s</div>
+<div class="counter">0.025s</div>
 <p>duration</p>
 </div>
 </td>
@@ -82,7 +82,7 @@
 </thead>
 <tr>
 <td class="success">getCurrentTemps</td>
-<td class="success">0.036s</td>
+<td class="success">0.025s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -90,19 +90,19 @@
 <div id="tab1" class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>2018-05-25 17:08:11.026  INFO 19854 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [uk.co.tertiarybrewery.brewapi.CurrentTempControllerTest], using SpringBootContextLoader
-2018-05-25 17:08:11.027  INFO 19854 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [uk.co.tertiarybrewery.brewapi.CurrentTempControllerTest]: no resource found for suffixes {-context.xml, Context.groovy}.
-2018-05-25 17:08:11.027  INFO 19854 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [uk.co.tertiarybrewery.brewapi.CurrentTempControllerTest]: CurrentTempControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2018-05-25 17:08:11.038  INFO 19854 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration uk.co.tertiarybrewery.brewapi.Application for test class uk.co.tertiarybrewery.brewapi.CurrentTempControllerTest
-2018-05-25 17:08:11.040  INFO 19854 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
-2018-05-25 17:08:11.040  INFO 19854 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@ad0f384, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@465afb59, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@4e8dd553, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@6a4ca9b9, org.springframework.test.context.support.DirtiesContextTestExecutionListener@670d2ba7, org.springframework.test.context.transaction.TransactionalTestExecutionListener@761c842c, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@561be0f1, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@59958aea, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@574bd26c, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@45e4014d, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@4c716d68, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@39c67cd6]
+<pre>2018-05-29 16:22:51.375  INFO 37984 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [uk.co.tertiarybrewery.brewapi.CurrentTempControllerTest], using SpringBootContextLoader
+2018-05-29 16:22:51.376  INFO 37984 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [uk.co.tertiarybrewery.brewapi.CurrentTempControllerTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2018-05-29 16:22:51.376  INFO 37984 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [uk.co.tertiarybrewery.brewapi.CurrentTempControllerTest]: CurrentTempControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2018-05-29 16:22:51.391  INFO 37984 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration uk.co.tertiarybrewery.brewapi.Application for test class uk.co.tertiarybrewery.brewapi.CurrentTempControllerTest
+2018-05-29 16:22:51.394  INFO 37984 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+2018-05-29 16:22:51.395  INFO 37984 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@6a70158d, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@55ac6afc, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@41ce4682, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@26f97956, org.springframework.test.context.support.DirtiesContextTestExecutionListener@4ccfdc79, org.springframework.test.context.transaction.TransactionalTestExecutionListener@7a02b496, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@494b0702, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@2495f4b4, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@160bd84b, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@79427818, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@68200325, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@631b7ac1]
 </pre>
 </span>
 </div>
 <div id="tab2" class="tab">
 <h2>Standard error</h2>
 <span class="code">
-<pre>Fri May 25 17:08:11 BST 2018 WARN: Establishing SSL connection without server's identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn't set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to 'false'. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
+<pre>Tue May 29 16:22:51 BST 2018 WARN: Establishing SSL connection without server's identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn't set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to 'false'. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
 </pre>
 </span>
 </div>
@@ -114,7 +114,7 @@
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 4.7</a> at 25-May-2018 17:08:11</p>
+<a href="http://www.gradle.org">Gradle 4.7</a> at 29-May-2018 16:22:51</p>
 </div>
 </div>
 </body>
