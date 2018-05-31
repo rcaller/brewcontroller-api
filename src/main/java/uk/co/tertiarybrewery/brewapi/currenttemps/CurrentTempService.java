@@ -14,4 +14,8 @@ public class CurrentTempService {
         TempData temps = currentTempDao.getTemps();
         return temps;
     }
+
+    public int getSecondsElapsed() {
+        return currentTempDao.getSecondsElapsed();
+    }
 }

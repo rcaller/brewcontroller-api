@@ -49,4 +49,14 @@ public class TargetTempsDao {
     public void addTempPoint(int pointTime, Float stepTemp) {
         jdbcTemplate.update("INSERT INTO targetTemps (secondsElapsed, temperature) VALUES (?, ?)", pointTime, stepTemp);
     }
+
+    public TargetTempPoint getTargetTempPointBefore(int secondsElapsed) {
+        TargetTempPoint before = jdbcTemplate.queryForObject("select secondsElapsed, temperature from targetTemps where secondsElapsed < ? ORDER BY secondsElapsed DESC LIMIT 1;", TargetTempPoint.class, secondsElapsed);
+        return before;
+    }
+
+    public TargetTempPoint getTargetTempPointAfter(int secondsElapsed) {
+        TargetTempPoint after = jdbcTemplate.queryForObject("select secondsElapsed, temperature from targetTemps where secondsElapsed > ? ORDER BY secondsElapsed ASC LIMIT 1;", TargetTempPoint.class, secondsElapsed);
+        return after;
+    }
 }

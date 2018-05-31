@@ -1,4 +1,4 @@
-package uk.co.tertiarybrewery.brewapi;
+package uk.co.tertiarybrewery.brewapi.currenttemps;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

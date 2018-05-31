@@ -16,4 +16,9 @@ public class CurrentTempDao {
                 new BeanPropertyRowMapper(TempData.class));
         return temps;
     }
+
+    public int getSecondsElapsed() {
+        Integer secondsElapsed = jdbcTemplate.queryForObject( "SELECT TIME_TO_SEC(TIMEDIFF(MAX(measurementTime), MIN(measurementTime))) FROM mashData", Integer.class);
+        return secondsElapsed.intValue();
+    }
 }

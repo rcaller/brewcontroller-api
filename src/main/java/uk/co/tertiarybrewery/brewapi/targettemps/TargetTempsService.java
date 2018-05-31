@@ -7,10 +7,27 @@ import java.util.List;
 
 @Component
 public class TargetTempsService {
-    @Autowired
+
     private TargetTempsDao targetTempsDao;
+    @Autowired
+    public TargetTempsService(TargetTempsDao targetTempsDao) {
+        this.targetTempsDao = targetTempsDao;
+    }
 
     public List<TargetTempPoint> getTemps() {
-        return this.targetTempsDao.getTemps();
+        return targetTempsDao.getTemps();
     }
+
+    public float getTargetTemp(int secondsElapsed) {
+        TargetTempPoint before = targetTempsDao.getTargetTempPointBefore(secondsElapsed);
+        TargetTempPoint after = targetTempsDao.getTargetTempPointAfter(secondsElapsed);
+        int timeIntoStep = (int) (secondsElapsed - before.getSecondsElapsed());
+        int stepLength = (int) (after.getSecondsElapsed() - before.getSecondsElapsed());
+        float tempDiff = after.getTemp()-before.getTemp();
+        float beforeTemp = before.getTemp();
+        float target = beforeTemp + (tempDiff * ((float)timeIntoStep/stepLength));
+        return target;
+    }
+
+
 }
