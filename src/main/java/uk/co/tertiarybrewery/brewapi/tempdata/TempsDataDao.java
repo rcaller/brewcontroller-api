@@ -5,6 +5,7 @@ import org.joda.time.Instant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
+import uk.co.tertiarybrewery.brewapi.pidintegration.TempReport;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -38,5 +39,16 @@ public class TempsDataDao {
         List<Map<String, Object>> rows = jdbcTemplate.queryForList("SELECT measurementTime FROM mashData ORDER BY measurementTime ASC LIMIT 1");
 
         return new Instant(rows.get(0).get("measurementTime"));
+    }
+
+    public void clear() {
+        jdbcTemplate.execute("DELETE FROM measurementData");
+    }
+
+    public void recordTemps(TempReport tempReport) {
+        jdbcTemplate.update("INSERT INTO mashData (measurementTime, mash, herms, flow) VALUES (now(), ?, ?, ?)",
+                tempReport.getMash(),
+                tempReport.getHerms(),
+                tempReport.getFlow());
     }
 }

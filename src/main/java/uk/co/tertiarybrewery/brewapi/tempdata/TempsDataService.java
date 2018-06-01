@@ -3,6 +3,7 @@ package uk.co.tertiarybrewery.brewapi.tempdata;
 import org.joda.time.Instant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import uk.co.tertiarybrewery.brewapi.pidintegration.TempReport;
 import uk.co.tertiarybrewery.brewapi.targettemps.TargetTempPoint;
 import uk.co.tertiarybrewery.brewapi.targettemps.TargetTempsService;
 
@@ -35,5 +36,14 @@ public class TempsDataService {
     public Instant getStartTime() {
         return tempsDataDao.getStartTime();
 
+    }
+
+
+    public void clear() {
+        tempsDataDao.clear();
+    }
+
+    public void recordTemps(TempReport tempReport) {
+        tempsDataDao.recordTemps(tempReport);
     }
 }
