@@ -42,7 +42,7 @@ public class TempsDataDao {
     }
 
     public void clear() {
-        jdbcTemplate.execute("DELETE FROM measurementData");
+        jdbcTemplate.execute("DELETE FROM mashData");
     }
 
     public void recordTemps(TempReport tempReport) {
