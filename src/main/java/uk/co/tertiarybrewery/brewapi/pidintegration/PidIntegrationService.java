@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import uk.co.tertiarybrewery.brewapi.currenttemps.CurrentTempService;
 import uk.co.tertiarybrewery.brewapi.runstatus.RunStatusDao;
+import uk.co.tertiarybrewery.brewapi.targettemps.TargetTempException;
 import uk.co.tertiarybrewery.brewapi.targettemps.TargetTempsService;
 import uk.co.tertiarybrewery.brewapi.tempdata.TempsDataService;
 
@@ -28,10 +29,17 @@ public class PidIntegrationService {
 
 
 
-    public float getTargetTemp() {
+    public TargetTempResponse getTargetTemp() throws TargetTempException {
       int secondsElapsed = currentTempService.getSecondsElapsed();
       float targetTemp = targetTempsService.getTargetTemp(secondsElapsed);
-      return targetTemp;
+      TargetTempResponse ttr = new TargetTempResponse();
+      if (runStatusDao.getRunStatus()) {
+          ttr.setActive(targetTemp);
+      }
+      else {
+          ttr.setPre_warm(targetTemp);
+      }
+      return ttr;
     }
 
     public void recordTemps(TempReport tempReport) {

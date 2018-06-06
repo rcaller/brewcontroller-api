@@ -8,6 +8,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 import uk.co.tertiarybrewery.brewapi.mashprofile.MashProfileBuilder;
+import uk.co.tertiarybrewery.brewapi.tempdata.TempsDataService;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -28,6 +29,9 @@ public class BeerXmlParser {
 
     @Autowired
     MashProfileBuilder mashProfileBuilder;
+
+    @Autowired
+    TempsDataService tempsDataService;
 
     public BeerXmlParser() throws ParserConfigurationException {
         documentBuilderFactory  = DocumentBuilderFactory.newInstance();
@@ -61,6 +65,7 @@ public class BeerXmlParser {
             throw new BeerXmlParseException("Unable to find mash steps");
         }
         mashProfileBuilder.clearProfile();
+        tempsDataService.clear();
 
         for (int i = 0; i < nodes.getLength(); i++) {
             Node stepDetails = nodes.item(i);

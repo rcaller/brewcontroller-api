@@ -20,6 +20,13 @@ public class PidIntegrationController {
         return new ResponseEntity<>(pidIntegrationService.getTargetTemp(), HttpStatus.OK);
     }
 
+    @CrossOrigin(origins = {"http://localhost:4200", "http://localhost:8080", "http://localhost"})
+    @GetMapping(value = "/in",produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public ResponseEntity<?> in() {
+        return new ResponseEntity<>(pidIntegrationService.getTargetTemp(), HttpStatus.OK);
+    }
+
 
 
 }

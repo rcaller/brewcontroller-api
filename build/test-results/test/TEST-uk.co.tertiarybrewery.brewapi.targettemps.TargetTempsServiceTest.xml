@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="uk.co.tertiarybrewery.brewapi.targettemps.TargetTempsServiceTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2018-06-04T09:40:42" hostname="tjmac222" time="0.024">
+<testsuite name="uk.co.tertiarybrewery.brewapi.targettemps.TargetTempsServiceTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2018-06-06T13:39:54" hostname="tjmac222" time="0.02">
   <properties/>
-  <testcase name="getTargetTempForFlatStep" classname="uk.co.tertiarybrewery.brewapi.targettemps.TargetTempsServiceTest" time="0.021"/>
+  <testcase name="getTargetTempForFlatStep" classname="uk.co.tertiarybrewery.brewapi.targettemps.TargetTempsServiceTest" time="0.018"/>
+  <testcase name="getTargetTempForStopped" classname="uk.co.tertiarybrewery.brewapi.targettemps.TargetTempsServiceTest" time="0.001"/>
   <testcase name="getTargetTempForIncreasingStep" classname="uk.co.tertiarybrewery.brewapi.targettemps.TargetTempsServiceTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

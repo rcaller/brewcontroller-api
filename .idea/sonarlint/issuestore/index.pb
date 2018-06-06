@@ -57,3 +57,11 @@ Ssrc/test/java/uk/co/tertiarybrewery/brewapi/targettemps/TargetTempsServiceTest.
 Usrc/main/java/uk/co/tertiarybrewery/brewapi/pidintegration/PidIntegrationService.java,4/7/47d17ca99170731e7367061431f4573ab24d6db4
 y
 Isrc/main/java/uk/co/tertiarybrewery/brewapi/beerxml/UploadController.java,c/f/cf5809de84eda0442b4e7155bd16f460801ccf35
+~
+Nsrc/main/java/uk/co/tertiarybrewery/brewapi/runstatus/RunStatusController.java,0/e/0efed6493c24d0dd78a01c4ebeb3569b3a73356c
+w
+Gsrc/main/java/uk/co/tertiarybrewery/brewapi/runstatus/RunStatusDao.java,a/e/ae693b48925ca825c5c33806f6888b4ec17f7574
+t
+Dsrc/main/java/uk/co/tertiarybrewery/brewapi/runstatus/RunStatus.java,9/f/9fc22bfb47ba011ee8ee66650ed4c57c87b6ec2d
+z
+Jsrc/main/java/uk/co/tertiarybrewery/brewapi/pidintegration/TempReport.java,a/c/ac97a7e99a7a06537b030accc7d16f704beb3420

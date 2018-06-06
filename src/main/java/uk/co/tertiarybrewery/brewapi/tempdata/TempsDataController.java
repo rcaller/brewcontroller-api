@@ -15,7 +15,7 @@ public class TempsDataController {
     @Autowired
     TempsDataService tempsDataService;
 
-    @CrossOrigin(origins = {"http://localhost:4200", "http://localhost:8080", "http://localhost"})
+    @CrossOrigin(origins = {"*"})
     @GetMapping(value = "/tempsdata",produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseEntity<?> index() {

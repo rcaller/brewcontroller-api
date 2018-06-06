@@ -17,7 +17,7 @@ public class RunStatusController {
         this.runStatusDao = runStatusDao;
     }
 
-    @CrossOrigin(origins = {"http://localhost:4200", "http://localhost:8080", "http://localhost"})
+    @CrossOrigin(origins = {"*"})
     @GetMapping(value = "/running",produces = MediaType.APPLICATION_JSON_VALUE)
 
     @ResponseBody
@@ -29,7 +29,7 @@ public class RunStatusController {
         return new ResponseEntity<>(runStatus, HttpStatus.OK);
     }
 
-    @CrossOrigin(origins = {"http://localhost:4200", "http://localhost:8080", "http://localhost"})
+    @CrossOrigin(origins = {"*"})
     @PostMapping(value = "/running",produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseEntity<?> updateRunStatus(@RequestBody RunStatus runStatus) {

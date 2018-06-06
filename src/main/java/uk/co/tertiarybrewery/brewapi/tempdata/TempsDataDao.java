@@ -36,7 +36,7 @@ public class TempsDataDao {
     }
 
     public Instant getStartTime() {
-        List<Map<String, Object>> rows = jdbcTemplate.queryForList("SELECT measurementTime FROM mashData ORDER BY measurementTime ASC LIMIT 1");
+        List<Map<String, Object>> rows = jdbcTemplate.queryForList("SELECT IFNULL((SELECT measurementTime FROM mashData ORDER BY measurementTime ASC LIMIT 1), NOW()) AS measurementTime");
 
         return new Instant(rows.get(0).get("measurementTime"));
     }

@@ -16,7 +16,7 @@ public class UploadController {
     @Autowired
     private BeerXmlParser beerXmlParser;
 
-    @CrossOrigin(origins = {"http://localhost:4200", "http://localhost:8080", "http://localhost"})
+    @CrossOrigin(origins = {"*"})
     @PostMapping("/upload")
     @ResponseBody
     public ResponseEntity<?> handleFileUpload(@RequestParam("file") MultipartFile file,
