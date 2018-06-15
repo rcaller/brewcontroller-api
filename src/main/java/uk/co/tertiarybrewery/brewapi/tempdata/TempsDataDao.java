@@ -26,9 +26,9 @@ public class TempsDataDao {
         for(Map row: rows) {
             InternalTempPoint itp = new InternalTempPoint();
             itp.setMeasurementTime((Timestamp) row.get("measurementTime"));
-            itp.setFlow((Float)row.get("flow"));
-            itp.setMash((Float)row.get("mash"));
-            itp.setHerms((Float)row.get("herms"));
+            itp.setFlow((Double)row.get("flow"));
+            itp.setMash((Double)row.get("mash"));
+            itp.setHerms((Double)row.get("herms"));
             temps.add(itp);
         }
 

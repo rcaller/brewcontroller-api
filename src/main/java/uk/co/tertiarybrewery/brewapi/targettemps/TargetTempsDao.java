@@ -25,8 +25,8 @@ public class TargetTempsDao {
         for(Map row: rows) {
             TargetTempPoint ttp = new TargetTempPoint();
             Integer elapsedInteger = (Integer)row.get("secondsElapsed");
-            ttp.setSecondsElapsed(elapsedInteger.floatValue());
-            ttp.setTemp((float)row.get("temperature"));
+            ttp.setSecondsElapsed(elapsedInteger.doubleValue());
+            ttp.setTemp((Double)row.get("temperature"));
 
             temps.add(ttp);
         }
@@ -58,8 +58,8 @@ public class TargetTempsDao {
             Map<String, Object> row =jdbcTemplate.queryForMap("select secondsElapsed, temperature from targetTemps where secondsElapsed <= ? ORDER BY secondsElapsed DESC LIMIT 1;", secondsElapsed);
             TargetTempPoint ttp = new TargetTempPoint();
             Integer elapsedInteger = (Integer)row.get("secondsElapsed");
-            ttp.setSecondsElapsed(elapsedInteger.floatValue());
-            ttp.setTemp((Float) row.get("temperature"));
+            ttp.setSecondsElapsed(elapsedInteger.doubleValue());
+            ttp.setTemp((Double) row.get("temperature"));
             before = Optional.of(ttp);
         }
         catch (IncorrectResultSizeDataAccessException e) {
@@ -74,8 +74,8 @@ public class TargetTempsDao {
             Map<String, Object> row =jdbcTemplate.queryForMap("select secondsElapsed, temperature from targetTemps where secondsElapsed >= ? ORDER BY secondsElapsed ASC LIMIT 1;", secondsElapsed);
             TargetTempPoint ttp = new TargetTempPoint();
             Integer elapsedInteger = (Integer)row.get("secondsElapsed");
-            ttp.setSecondsElapsed(elapsedInteger.floatValue());
-            ttp.setTemp((Float) row.get("temperature"));
+            ttp.setSecondsElapsed(elapsedInteger.doubleValue());
+            ttp.setTemp((Double) row.get("temperature"));
             after = Optional.of(ttp);
         }
         catch (IncorrectResultSizeDataAccessException e) {

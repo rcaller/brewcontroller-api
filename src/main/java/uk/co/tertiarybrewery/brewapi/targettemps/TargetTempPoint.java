@@ -3,22 +3,22 @@ package uk.co.tertiarybrewery.brewapi.targettemps;
 
 public class TargetTempPoint {
 
-    public Float getSecondsElapsed() {
+    public Double getSecondsElapsed() {
         return secondsElapsed;
     }
 
-    public float getTemp() {
+    public Double getTemp() {
         return temp;
     }
 
-    private Float secondsElapsed;
-    private float temp;
+    private Double secondsElapsed;
+    private Double temp;
     
-    public void setSecondsElapsed(Float secondsElapsed) {
+    public void setSecondsElapsed(Double secondsElapsed) {
         this.secondsElapsed = secondsElapsed;
     }
 
-    public void setTemp(Float temp) {
+    public void setTemp(Double temp) {
         this.temp = temp;
     }
 }

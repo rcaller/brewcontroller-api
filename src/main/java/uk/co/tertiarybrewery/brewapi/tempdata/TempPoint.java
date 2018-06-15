@@ -5,9 +5,9 @@ import org.joda.time.Instant;
 
 public class TempPoint {
     private Instant timeStamp;
-    private float temperature;
+    private double temperature;
 
-    public TempPoint(Instant measurementTime, float temperature) {
+    public TempPoint(Instant measurementTime, double temperature) {
         this.timeStamp = measurementTime;
         this.temperature = temperature;
     }
@@ -20,7 +20,7 @@ public class TempPoint {
         this.timeStamp = timeStamp;
     }
 
-    public float getTemperature() {
+    public double getTemperature() {
         return temperature;
     }
 

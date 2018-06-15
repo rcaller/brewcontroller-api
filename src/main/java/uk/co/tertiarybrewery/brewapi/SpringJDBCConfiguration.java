@@ -8,6 +8,8 @@ import javax.sql.DataSource;
 
 @Configuration
 public class SpringJDBCConfiguration {
+    /*
+
     @Bean
     public DataSource mysqlDataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
@@ -19,4 +21,17 @@ public class SpringJDBCConfiguration {
 
         return dataSource;
     }
+*/
+    @Bean
+    public DataSource h2DataSource() {
+        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+        dataSource.setDriverClassName("org.h2.Driver");
+        dataSource.setUrl("jdbc:h2:mem:brewcontroller;MODE=MySQL;FILE_LOCK=NO;DB_CLOSE_DELAY=-1");
+        dataSource.setUsername("sa");
+        dataSource.setPassword("");
+
+
+        return dataSource;
+    }
+
 }

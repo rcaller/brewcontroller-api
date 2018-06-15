@@ -10,34 +10,34 @@ public class InternalTempPoint {
 
     }
 
-    public InternalTempPoint(Timestamp measurementTime, float mash, float herms, float flow) {
+    public InternalTempPoint(Timestamp measurementTime, double mash, double herms, double flow) {
         this.measurementTime = new Instant(measurementTime.getTime());
         this.mash = mash;
         this.herms = herms;
         this.flow = flow;
     }
 
-    public float getHerms() {
+    public double getHerms() {
         return herms;
     }
 
-    public void setHerms(float herms) {
+    public void setHerms(double herms) {
         this.herms = herms;
     }
 
-    public float getMash() {
+    public double getMash() {
         return mash;
     }
 
-    public void setMash(float mash) {
+    public void setMash(double mash) {
         this.mash = mash;
     }
 
-    public float getFlow() {
+    public double getFlow() {
         return flow;
     }
 
-    public void setFlow(float flow) {
+    public void setFlow(double flow) {
         this.flow = flow;
     }
 
@@ -54,7 +54,7 @@ public class InternalTempPoint {
     }
 
     private Instant measurementTime;
-    private float herms;
-    private float mash;
-    private float flow;
+    private double herms;
+    private double mash;
+    private double flow;
 }

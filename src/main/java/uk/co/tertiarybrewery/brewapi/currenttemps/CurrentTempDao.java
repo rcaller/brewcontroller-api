@@ -25,7 +25,9 @@ public class CurrentTempDao {
     }
 
     public int getSecondsElapsed() {
-        Integer secondsElapsed = jdbcTemplate.queryForObject( "SELECT IFNULL ((SELECT TIME_TO_SEC(TIMEDIFF(MAX(measurementTime), MIN(measurementTime))) FROM mashData), 0)", Integer.class);
+//        Integer secondsElapsed = jdbcTemplate.queryForObject( "SELECT IFNULL ((SELECT TIME_TO_SEC(TIMEDIFF(MAX(measurementTime), MIN(measurementTime))) FROM mashData), 0)", Integer.class);
+        Integer secondsElapsed = jdbcTemplate.queryForObject( "SELECT IFNULL((SELECT (EXTRACT(EPOCH FROM (MAX(measurementTime)))) -  (EXTRACT(EPOCH FROM (MIN(measurementTime)))) as tmediff FROM mashData), 0)", Integer.class);
+
         return secondsElapsed.intValue();
     }
 }

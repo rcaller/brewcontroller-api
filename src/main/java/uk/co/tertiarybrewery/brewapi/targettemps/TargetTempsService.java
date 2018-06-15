@@ -19,10 +19,10 @@ public class TargetTempsService {
         return targetTempsDao.getTemps();
     }
 
-    public float getTargetTemp(int secondsElapsed) throws TargetTempException {
+    public double getTargetTemp(int secondsElapsed) throws TargetTempException {
         Optional<TargetTempPoint> beforeOption = targetTempsDao.getTargetTempPointBefore(secondsElapsed);
         Optional<TargetTempPoint> afterOption = targetTempsDao.getTargetTempPointAfter(secondsElapsed);
-        float target = 66f;
+        double target = 66.0;
         if (beforeOption.isPresent()) {
             TargetTempPoint before = beforeOption.get();
             target = before.getTemp();
@@ -31,8 +31,8 @@ public class TargetTempsService {
                 int timeIntoStep = (int) (secondsElapsed - before.getSecondsElapsed());
                 int stepLength = (int) (after.getSecondsElapsed() - before.getSecondsElapsed());
                 if (stepLength > 0) {
-                    float tempDiff = after.getTemp() - before.getTemp();
-                    float beforeTemp = before.getTemp();
+                    double tempDiff = after.getTemp() - before.getTemp();
+                    double beforeTemp = before.getTemp();
                     target = beforeTemp + (tempDiff * ((float) timeIntoStep / stepLength));
                 }
             }

@@ -1,5 +1,7 @@
 package uk.co.tertiarybrewery.brewapi.pidintegration;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import uk.co.tertiarybrewery.brewapi.currenttemps.CurrentTempService;
@@ -15,7 +17,7 @@ public class PidIntegrationService {
     private CurrentTempService currentTempService;
     private RunStatusDao runStatusDao;
     private TempsDataService tempsDataService;
-
+    private static final Logger logger = LoggerFactory.getLogger(PidIntegrationService.class);
     @Autowired
     public PidIntegrationService(CurrentTempService currentTempService,
                                  TargetTempsService targetTempsService,
@@ -31,7 +33,13 @@ public class PidIntegrationService {
 
     public TargetTempResponse getTargetTemp() throws TargetTempException {
       int secondsElapsed = currentTempService.getSecondsElapsed();
-      float targetTemp = targetTempsService.getTargetTemp(secondsElapsed);
+      double targetTemp = 65;
+      try {
+          targetTemp = targetTempsService.getTargetTemp(secondsElapsed);
+      }
+      catch (TargetTempException e) {
+          logger.warn("No target temp available");
+      }
       TargetTempResponse ttr = new TargetTempResponse();
       if (runStatusDao.getRunStatus()) {
           ttr.setActive(targetTemp);
