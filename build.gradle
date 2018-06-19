@@ -1,9 +1,11 @@
 buildscript {
     repositories {
         mavenCentral()
+        jcenter()
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.2.RELEASE")
+        classpath("com.netflix.nebula:gradle-ospackage-plugin:4.4.0")
     }
 }
 
@@ -12,10 +14,12 @@ apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
+apply plugin: 'nebula.deb'
 
 bootJar {
     baseName = 'brewapi'
     version =  '0.1.0'
+    launchScript()
 }
 
 repositories {
@@ -35,4 +39,18 @@ dependencies {
     testCompile("junit:junit")
     testCompile("org.springframework.boot:spring-boot-starter-test")
     testCompile group: 'com.google.guava', name: 'guava', version: 'r05'
+}
+
+task createDeb(type: Deb ) {
+    packageName = "brewapi"
+    version="${project.version}"
+    type=BINARY
+    requires('default-java')
+
+    into '/usr/local'
+    from(jar.outputs.files) {
+        into 'bin'
+    }
+    link('/etc/init.d/brewapi', '/usr/local/bin/brewapi-${project.version}.jar')
+
 }
