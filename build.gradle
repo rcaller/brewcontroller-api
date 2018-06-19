@@ -1,3 +1,6 @@
+group 'brewapi'
+version '0.1.0'
+
 buildscript {
     repositories {
         mavenCentral()
@@ -24,6 +27,7 @@ bootJar {
 
 repositories {
     mavenCentral()
+    jcenter()
 }
 
 sourceCompatibility = 1.8
@@ -41,16 +45,20 @@ dependencies {
     testCompile group: 'com.google.guava', name: 'guava', version: 'r05'
 }
 
+
 task createDeb(type: Deb ) {
     packageName = "brewapi"
-    version="${project.version}"
-    type=BINARY
+    version = "${project.version}"
+    type = BINARY
     requires('default-java')
 
-    into '/usr/local'
-    from(jar.outputs.files) {
-        into 'bin'
+    into "/usr/local"
+    from("build/libs") {
+        rename { String fileName ->
+            fileName.replace("-${project.version}", "")
+        }
+        fileMode 0500
+        into "lib"
     }
-    link('/etc/init.d/brewapi', '/usr/local/bin/brewapi-${project.version}.jar')
-
+    link ("/etc/init.d/brewapi", "/usr/local/lib/brewapi.jar")
 }
