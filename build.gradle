@@ -50,6 +50,7 @@ task createDeb(type: Deb ) {
     packageName = "brewapi"
     version = "${project.version}"
     type = BINARY
+    arch="armhf"
     requires('default-jre-headless').or('java6-runtime-headless')
 
     into "/usr/local"
