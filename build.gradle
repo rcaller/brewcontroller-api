@@ -49,9 +49,11 @@ dependencies {
 task createDeb(type: Deb ) {
     packageName = "brewapi"
     version = "${project.version}"
+    arch="armhf"
     type = BINARY
     requires('default-jre-headless').or('java6-runtime-headless')
-
+    postInstall 'update-rc.d brewapi defaults'
+    preUninstall 'update-rc.d brewapi remove'
     into "/usr/local"
     from("build/libs") {
         rename { String fileName ->
