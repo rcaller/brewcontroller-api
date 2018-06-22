@@ -1,5 +1,5 @@
 group 'brewapi'
-version '0.1.0'
+version '0.1.'+(System.env.BUILD_NUMBER ?: 1)
 
 buildscript {
     repositories {
@@ -51,6 +51,7 @@ task createDeb(type: Deb ) {
     version = "${project.version}"
     arch="armhf"
     type = BINARY
+    arch="armhf"
     requires('default-jre-headless').or('java6-runtime-headless')
     postInstall 'update-rc.d brewapi defaults'
     preUninstall 'update-rc.d brewapi remove'
