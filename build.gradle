@@ -21,7 +21,7 @@ apply plugin: 'nebula.deb'
 
 bootJar {
     baseName = 'brewapi'
-    version =  '0.1.0'
+    version =  '0.1.'+(System.env.BUILD_NUMBER ?: 1)
     launchScript()
 }
 
