@@ -1,1 +1,1 @@
-insert into runStatus (running) values (true);
+insert into runStatus (running) values (false);
