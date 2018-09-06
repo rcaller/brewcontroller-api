@@ -21,7 +21,10 @@ public class MashProfileBuilder {
 
     public void addStep(Float step_time, Float step_temp, Float ramp_time) {
         int lastTempPointTime = targetTempsDao.getLastTempPointTime();
-        int firstPointTime = lastTempPointTime + Math.round(ramp_time*60);
+        int firstPointTime = lastTempPointTime;
+        if (lastTempPointTime !=0) {
+            firstPointTime += Math.round(ramp_time * 60);
+        }
         int secondPointTime = firstPointTime + Math.round(step_time*60);
         targetTempsDao.addTempPoint(firstPointTime, step_temp);
         targetTempsDao.addTempPoint(secondPointTime, step_temp);
