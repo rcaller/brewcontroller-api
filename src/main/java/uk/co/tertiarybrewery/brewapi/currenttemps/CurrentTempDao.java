@@ -15,7 +15,7 @@ public class CurrentTempDao {
     public TempData getTemps() {
         TempData temps = null;
         try {
-            temps = (TempData) jdbcTemplate.queryForObject("SELECT mash, herms, flow FROM mashData ORDER BY measurementTime DESC LIMIT 1", new Object[]{},
+            temps = (TempData) jdbcTemplate.queryForObject("SELECT mash, herms, flow, hlt FROM mashData ORDER BY measurementTime DESC LIMIT 1", new Object[]{},
                     new BeanPropertyRowMapper(TempData.class));
         }
         catch (EmptyResultDataAccessException e){

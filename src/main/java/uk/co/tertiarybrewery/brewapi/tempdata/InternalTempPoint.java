@@ -6,15 +6,23 @@ import org.joda.time.Instant;
 import java.sql.Timestamp;
 
 public class InternalTempPoint {
+
+    private Instant measurementTime;
+    private double herms;
+    private double mash;
+    private double flow;
+    private double hlt;
+
     public InternalTempPoint() {
 
     }
 
-    public InternalTempPoint(Timestamp measurementTime, double mash, double herms, double flow) {
+    public InternalTempPoint(Timestamp measurementTime, double mash, double herms, double flow, double hlt) {
         this.measurementTime = new Instant(measurementTime.getTime());
         this.mash = mash;
         this.herms = herms;
         this.flow = flow;
+        this.hlt = hlt;
     }
 
     public double getHerms() {
@@ -53,8 +61,13 @@ public class InternalTempPoint {
         this.measurementTime = new Instant(measurementTime.getTime());
     }
 
-    private Instant measurementTime;
-    private double herms;
-    private double mash;
-    private double flow;
+    public double getHlt() {
+        return hlt;
+    }
+
+    public void setHlt(double hlt) {
+        this.hlt = hlt;
+    }
+
+
 }

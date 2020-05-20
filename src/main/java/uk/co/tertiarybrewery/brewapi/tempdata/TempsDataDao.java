@@ -21,7 +21,7 @@ public class TempsDataDao {
 
         List<InternalTempPoint> temps =  new ArrayList<InternalTempPoint>();
 
-        List<Map<String, Object>> rows = jdbcTemplate.queryForList("SELECT measurementTime, mash, herms, flow FROM mashData ORDER BY measurementTime DESC");
+        List<Map<String, Object>> rows = jdbcTemplate.queryForList("SELECT measurementTime, mash, herms, flow, hlt FROM mashData ORDER BY measurementTime DESC");
 
         for(Map row: rows) {
             InternalTempPoint itp = new InternalTempPoint();
@@ -29,6 +29,7 @@ public class TempsDataDao {
             itp.setFlow((Double)row.get("flow"));
             itp.setMash((Double)row.get("mash"));
             itp.setHerms((Double)row.get("herms"));
+            itp.setHlt((Double)row.get("hlt"));
             temps.add(itp);
         }
 

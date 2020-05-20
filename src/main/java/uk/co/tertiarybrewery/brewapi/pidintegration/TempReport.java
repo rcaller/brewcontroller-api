@@ -5,6 +5,16 @@ package uk.co.tertiarybrewery.brewapi.pidintegration;
      private Float herms;
      private Float flow;
 
+     public Float getHlt() {
+         return hlt;
+     }
+
+     public void setHlt(Float hlt) {
+         this.hlt = hlt;
+     }
+
+     private Float hlt;
+
      public Float getMash() {
          return mash;
      }
