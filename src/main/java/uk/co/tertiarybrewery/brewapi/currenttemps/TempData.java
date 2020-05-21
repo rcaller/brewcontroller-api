@@ -8,6 +8,16 @@ public class TempData {
     private float herms;
     private float flow;
 
+    public float getHlt() {
+        return hlt;
+    }
+
+    public void setHlt(float hlt) {
+        this.hlt = hlt;
+    }
+
+    private float hlt;
+
     public float getMash() {
         return mash;
     }
@@ -35,9 +45,10 @@ public class TempData {
 
     }
 
-    public TempData(float mash, float herms, float flow) {
+    public TempData(float mash, float herms, float flow, float hlt) {
         this.mash = mash;
         this.herms = herms;
         this.flow = flow;
+        this.hlt = hlt;
     }
 }
