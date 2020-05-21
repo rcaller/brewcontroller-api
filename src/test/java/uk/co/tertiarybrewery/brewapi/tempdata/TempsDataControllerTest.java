@@ -20,6 +20,8 @@ public class TempsDataControllerTest {
     @Autowired
     private MockMvc mvc;
 
+
+
     @Test
     public void getCurrentTemps() throws Exception {
         mvc.perform(MockMvcRequestBuilders.get("/tempsdata").accept(MediaType.APPLICATION_JSON))
