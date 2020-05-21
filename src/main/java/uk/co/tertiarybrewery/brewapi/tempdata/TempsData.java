@@ -9,6 +9,7 @@ public class TempsData {
     List<TempPoint> mash;
     List<TempPoint> herms;
     List<TempPoint> flow;
+    List<TempPoint> hlt;
 
     public List<TempPoint> getTarget() {
         return target;
@@ -25,7 +26,9 @@ public class TempsData {
     public List<TempPoint> getFlow() {
         return flow;
     }
-
+    public List<TempPoint> getHlt() {
+        return hlt;
+    }
 
 
     public TempsData() {
@@ -33,6 +36,7 @@ public class TempsData {
        this.mash = new ArrayList<>();
        this.herms = new ArrayList<>();
        this.flow = new ArrayList<>();
+       this.hlt = new ArrayList<>();
     }
 
     public void addMashTemp(TempPoint temp) {
@@ -46,5 +50,8 @@ public class TempsData {
     }
     public void addFlowTemp(TempPoint temp) {
         this.flow.add(temp);
+    }
+
+    public void addHltTemp(TempPoint temp) {this.hlt.add(temp);
     }
 }

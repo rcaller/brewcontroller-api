@@ -25,6 +25,7 @@ public class TempsDataService {
             tempsData.addHermsTemp(new TempPoint(itp.getMeasurementTime(), itp.getHerms()));
             tempsData.addMashTemp(new TempPoint(itp.getMeasurementTime(), itp.getMash()));
             tempsData.addFlowTemp(new TempPoint(itp.getMeasurementTime(), itp.getFlow()));
+            tempsData.addHltTemp(new TempPoint(itp.getMeasurementTime(), itp.getHlt()));
         }
         List<TargetTempPoint> targetTemps = targetTempsService.getTemps();
         for (TargetTempPoint ttp: targetTemps) {
