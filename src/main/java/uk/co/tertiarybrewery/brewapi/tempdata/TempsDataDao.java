@@ -47,9 +47,10 @@ public class TempsDataDao {
     }
 
     public void recordTemps(TempReport tempReport) {
-        jdbcTemplate.update("INSERT INTO mashData (measurementTime, mash, herms, flow) VALUES (now(), ?, ?, ?)",
+        jdbcTemplate.update("INSERT INTO mashData (measurementTime, mash, herms, flow, hlt) VALUES (now(), ?, ?, ?, ?)",
                 tempReport.getMash(),
                 tempReport.getHerms(),
-                tempReport.getFlow());
+                tempReport.getFlow(),
+                tempReport.getHlt());
     }
 }
