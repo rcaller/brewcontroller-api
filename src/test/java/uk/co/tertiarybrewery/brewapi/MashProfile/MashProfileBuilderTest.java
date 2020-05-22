@@ -26,7 +26,7 @@ public class MashProfileBuilderTest {
     public void addStartingStep() {
         when(targetTempsDao.getLastTempPointTime()).thenReturn(0);
         MashProfileBuilder mashProfileBuilder = new MashProfileBuilder(targetTempsDao);
-        mashProfileBuilder.addStep(5.0f, 0.0f, 1.0f);
+        mashProfileBuilder.addStep(5.0f, 0.0f, 1.0f, 1.0f);
         verify(targetTempsDao, times(1)).addTempPoint(0, 0.0f);
         verify(targetTempsDao, times(1)).addTempPoint(300, 0.0f);
     }
@@ -35,7 +35,7 @@ public class MashProfileBuilderTest {
     public void addNonStartingStep() {
         when(targetTempsDao.getLastTempPointTime()).thenReturn(10);
         MashProfileBuilder mashProfileBuilder = new MashProfileBuilder(targetTempsDao);
-        mashProfileBuilder.addStep(5.0f, 0.0f, 1.0f);
+        mashProfileBuilder.addStep(5.0f, 0.0f, 1.0f, 1.0f);
         verify(targetTempsDao, times(1)).addTempPoint(70, 0.0f);
         verify(targetTempsDao, times(1)).addTempPoint(370, 0.0f);
     }
