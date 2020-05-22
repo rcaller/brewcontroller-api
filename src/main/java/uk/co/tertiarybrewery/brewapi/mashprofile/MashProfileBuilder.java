@@ -19,7 +19,7 @@ public class MashProfileBuilder {
 
     }
 
-    public void addStep(Float step_time, Float step_temp, Float ramp_time) {
+    public void addStep(Float step_time, Float step_temp, Float ramp_time, Float infusion_temp) {
         int lastTempPointTime = targetTempsDao.getLastTempPointTime();
         int firstPointTime = lastTempPointTime;
         if (lastTempPointTime !=0) {

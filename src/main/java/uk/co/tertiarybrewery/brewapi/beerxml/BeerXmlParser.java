@@ -72,8 +72,8 @@ public class BeerXmlParser {
             Float stepTime= getNodeValue(xPath, stepDetails,"STEP_TIME");
             Float stepTemp= getNodeValue(xPath, stepDetails,"STEP_TEMP");
             Float rampTime= getNodeValue(xPath, stepDetails,"RAMP_TIME");
-
-            mashProfileBuilder.addStep(stepTime, stepTemp, rampTime);
+            Float infusionTemp = getNodeValue(xPath, stepDetails,"INFUSE_TEMP");
+            mashProfileBuilder.addStep(stepTime, stepTemp, rampTime, infusionTemp);
 
         }
     }
