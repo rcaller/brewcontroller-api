@@ -6,6 +6,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 import uk.co.tertiarybrewery.brewapi.targettemps.TargetTempPoint;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -13,6 +15,12 @@ import java.util.Optional;
 public class HltTempsDao {
     @Autowired
     JdbcTemplate jdbcTemplate;
+
+    public void clear() {
+
+        jdbcTemplate.update("DELETE FROM hltTemps");
+
+    }
 
     public void addTempPoint(int pointTime, Float stepTemp) {
         jdbcTemplate.update("INSERT INTO hltTemps (secondsElapsed, temperature) VALUES (?, ?)", pointTime, stepTemp);
@@ -31,5 +39,22 @@ public class HltTempsDao {
 
         }
         return before;
+    }
+
+    public List<TargetTempPoint> getTemps() {
+        List<TargetTempPoint> temps =  new ArrayList<TargetTempPoint>();
+
+        List<Map<String, Object>> rows = jdbcTemplate.queryForList("SELECT secondsElapsed, temperature FROM hltTemps ORDER BY secondsElapsed ASC");
+
+        for(Map row: rows) {
+            TargetTempPoint ttp = new TargetTempPoint();
+            Integer elapsedInteger = (Integer)row.get("secondsElapsed");
+            ttp.setSecondsElapsed(elapsedInteger.doubleValue());
+            ttp.setTemp((Double)row.get("temperature"));
+
+            temps.add(ttp);
+        }
+
+        return temps;
     }
 }

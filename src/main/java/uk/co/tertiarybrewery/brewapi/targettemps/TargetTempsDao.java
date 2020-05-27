@@ -2,6 +2,7 @@ package uk.co.tertiarybrewery.brewapi.targettemps;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.dao.IncorrectResultSizeDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
@@ -35,10 +36,12 @@ public class TargetTempsDao {
     }
 
     public void clear() {
+
         jdbcTemplate.update("DELETE FROM targetTemps");
+
     }
 
-    public int getLastTempPointTime() {
+    public int getLastStepEndTime() {
         Integer lastTempPoint = jdbcTemplate.queryForObject("SELECT MAX(secondsElapsed) FROM targetTemps", Integer.class);
         if (lastTempPoint!=null) {
             return (int)lastTempPoint;
@@ -47,7 +50,21 @@ public class TargetTempsDao {
             return 0;
         }
     }
+    public int getLastStepStartTime() {
+        try {
+            Integer lastTempPoint = jdbcTemplate.queryForObject("SELECT distinct(secondsElapsed) FROM targetTemps ORDER BY secondsElapsed LIMIT 2,1", Integer.class);
+            if (lastTempPoint!=null) {
+                return (int)lastTempPoint;
+            }
+            else {
+                return 0;
+            }
+        }
+        catch (EmptyResultDataAccessException e) {
+            return 0;
+        }
 
+    }
     public void addTempPoint(int pointTime, Float stepTemp) {
         jdbcTemplate.update("INSERT INTO targetTemps (secondsElapsed, temperature) VALUES (?, ?)", pointTime, stepTemp);
     }

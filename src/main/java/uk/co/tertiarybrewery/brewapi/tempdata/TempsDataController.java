@@ -22,6 +22,13 @@ public class TempsDataController {
         return new ResponseEntity<>(tempsDataService.getTemps(), HttpStatus.OK);
     }
 
+    @CrossOrigin(origins = {"*"})
+    @GetMapping(value = "/hltdata",produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public ResponseEntity<?> hlt() {
+        return new ResponseEntity<>(tempsDataService.getHltTemps(), HttpStatus.OK);
+    }
+
 
 
 }

@@ -161,6 +161,7 @@
       <NAME>Mash</NAME>
       <VERSION>1</VERSION>
       <GRAIN_TEMP>20</GRAIN_TEMP>
+      <SPARGE_TEMP>76.0</SPARGE_TEMP>
       <MASH_STEPS>
           <MASH_STEP>
             <NAME>Mash step</NAME>
@@ -168,6 +169,7 @@
             <TYPE>Temperature</TYPE>
             <STEP_TEMP>65</STEP_TEMP>
             <STEP_TIME>75</STEP_TIME>
+              <INFUSE_TEMP>77</INFUSE_TEMP>
           </MASH_STEP>
           <MASH_STEP>
               <NAME>Mash step</NAME>
@@ -176,6 +178,7 @@
               <STEP_TEMP>76</STEP_TEMP>
               <STEP_TIME>12</STEP_TIME>
               <RAMP_TIME>2</RAMP_TIME>
+              <INFUSE_TEMP>80</INFUSE_TEMP>
           </MASH_STEP>
       </MASH_STEPS>
     </MASH>

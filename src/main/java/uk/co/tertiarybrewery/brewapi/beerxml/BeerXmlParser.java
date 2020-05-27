@@ -74,15 +74,24 @@ public class BeerXmlParser {
             Float rampTime= getNodeValue(xPath, stepDetails,"RAMP_TIME");
             Float infusionTemp = getNodeValue(xPath, stepDetails,"INFUSE_TEMP");
             mashProfileBuilder.addStep(stepTime, stepTemp, rampTime, infusionTemp);
-
         }
+        Object spargeNode;
+        try {
+            spargeNode = xPath.evaluate("/RECIPES/RECIPE/MASH/SPARGE_TEMP",
+                    dom, XPathConstants.NUMBER);
+        } catch (XPathExpressionException e) {
+            throw new BeerXmlParseException("Unable to find sparge temp");
+        }
+        Float spargeTemp = ((Double)spargeNode).floatValue();
+        mashProfileBuilder.addHltSpargeStep(spargeTemp);
     }
 
     private Float getNodeValue(XPath xPath, Node stepDetails, String nodeName) throws BeerXmlParseException {
         Float dataValue;
         try {
-           
-            dataValue = Float.valueOf(xPath.evaluate(nodeName, stepDetails));
+            String fieldValue = xPath.evaluate(nodeName, stepDetails);
+            String cleanValue = fieldValue.replaceAll("[\\sCF]", "");
+            dataValue = Float.valueOf(cleanValue);
         } catch (XPathExpressionException e) {
             throw new BeerXmlParseException("Invalid XML (STEP_TIME)");
         } catch (NumberFormatException e) {
