@@ -4,6 +4,7 @@ package uk.co.tertiarybrewery.brewapi.pidintegration;
      private Float mash;
      private Float herms;
      private Float flow;
+     private Float hlt;
 
      public Float getHlt() {
          return hlt;
@@ -13,7 +14,7 @@ package uk.co.tertiarybrewery.brewapi.pidintegration;
          this.hlt = hlt;
      }
 
-     private Float hlt;
+
 
      public Float getMash() {
          return mash;

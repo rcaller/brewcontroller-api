@@ -2,6 +2,10 @@ package uk.co.tertiarybrewery.brewapi.pidintegration;
 
 
 public class TargetTempResponse {
+    double active;
+    double pre_warm;
+    double hlt;
+
     public double getActive() {
         return active;
     }
@@ -18,6 +22,14 @@ public class TargetTempResponse {
         this.pre_warm = pre_warm;
     }
 
-    double active;
-    double pre_warm;
+
+    public double getHlt() {
+        return hlt;
+    }
+
+    public void setHlt(double hlt) {
+        this.hlt = hlt;
+    }
+
+
 }
